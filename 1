@@ -1,0 +1,28 @@
+def findTwoUniqueNumbers(arr):
+  
+    xor_result = 0
+    for num in arr:
+        xor_result ^= num
+    
+
+    set_bit = xor_result & -xor_result
+    
+    
+    num1, num2 = 0, 0
+    
+    for num in arr:
+        if num & set_bit:
+            num1 ^= num  # XOR for numbers with the set bit
+        else:
+            num2 ^= num  # XOR for numbers without the set bit
+    
+    
+    return sorted([num1, num2])
+
+
+arr1 = [1, 2, 3, 2, 1, 4]
+print(findTwoUniqueNumbers(arr1))  # Output: [3, 4]
+
+
+arr2 = [2, 1, 3, 2]
+print(findTwoUniqueNumbers(arr2))  # Output: [1, 3]
