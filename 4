@@ -6,19 +6,18 @@ def getMaxToys(prices, money):
 
     for end in range(n):
         current_sum += prices[end]
-
+        
         while current_sum > money:
             current_sum -= prices[start]
             start += 1
-
+        
         max_toys = max(max_toys, end - start + 1)
-
+    
     return max_toys
 
-# Get user input
-tickets = input("Enter the prices of the tickets  ")
-prices = list(map(int, tickets.split(',')))
-money = int(input("Enter your budget: "))
+# Sample input
+prices = [1, 4, 5, 3, 2, 1, 6]
+money = 6
 
-# Calculate and print the maximum number of toys
-print("Maximum number of toys you can purchase:", getMaxToys(prices, money))
+# Function call
+print(getMaxToys(prices, money))  # Output: 3
